@@ -1,0 +1,117 @@
+<aside class="main-sidebar sidebar-light-primary elevation-4">
+  <!-- Brand Logo -->
+  <a href="../../index3.html" class="brand-link">
+    <img [src]= "trackingService.getpictureComp()"
+       alt="BI Company"
+       style="width: 168px; height: 58px;" />
+
+    <div class="brand-text font-weight-bold"></div>
+    <div
+      class="brand-text font-weight-bold"
+      style="font-size: 8px; color: #119da4; text-align: justify; margin-top: 0"  >
+    </div>
+  </a>
+
+
+<div class="sidebar">
+
+    <!-- Sidebar user (optional) -->
+    <div class="user-panel mt-4 pb-2 mb-2 brand-image">
+
+      <select
+        id="company" (change)="onCompanysSelected($event)"  class="form-control select-side"
+                     title= "{{ 'select' | translate  }} {{ 'company' | translate  }}" >
+        <!--   <option selected disabled value="">   {{ 'company'| translate }}     </option> -->
+
+        <option *ngFor="let item of companyData" [value]="item.id_company">
+          {{ item.company }}
+        </option>
+      </select>
+
+      <select id="branchs" *ngIf="trackingService.getabranch() !== 'No'" (change)="onBranchsSelected($event)"
+              class="form-control select-side"
+              title= "{{ 'select' | translate }} {{ 'branchs' | translate }} {{'o'}} {{ 'active' | translate }}">
+        <!--      <option selected disabled value=""> Sucursales    </option> -->
+        <option *ngFor="let item of branchData" [value]="item.id_branchs">
+            {{ item.branchs }}
+        </option>
+      </select>
+
+      <select id="cp" *ngIf="trackingService.getaplat() !== 'No'" (change)="onCpSelected($event)"
+        class="form-control select-side" title="{{ 'select' | translate }}
+              {{ 'center' | translate }} {{ 'process' | translate }}">
+        <!--       <option value="">Seleccione Centro Proceso</option> -->
+        <option *ngFor="let item of centerprocessData" [value]="item.id">
+          {{ item.c2 }}
+        </option>
+      </select>
+
+      <select id="platform" *ngIf="trackingService.getaplat() !== 'No'" (change)="onPlataformSelected($event)"
+        class="form-control select-side"title="{{ 'select' | translate }} {{ 'platforms' | translate  }}">
+        <!--       <option value="">Seleccione Plataforma</option> -->
+        <option *ngFor="let item of platformData" [value]="item.description">
+          {{ item.description }}
+        </option>
+      </select>
+
+        <select id="projects" *ngIf="trackingService.getaproject() !== 'No'" (change)="onProjectSelected($event)"
+              class="form-control select-side"
+              title= "{{ 'select' | translate  }} {{ 'projects' | translate  }}">
+            <!--       <option value="">Seleccione un proyecto</option> -->
+          <option *ngFor="let item of projectData" [value]="item.id_projects">
+            {{ item.projects }}
+          </option>
+        </select>
+    </div>
+
+  <ul class="nav flex-column">
+    <li class="nav-item">
+      <a class="nav-link active" (click)="dashboardproc()">
+        <i class="fas fa-tachometer-alt"></i> Dashboard
+      </a>
+    </li>
+
+    <li class="nav-item">
+      <a class="nav-link" (click)="PepOper()">
+        <i class="fas fa-building"></i> {{ 'PEP' | translate }}{{ ' ' }}{{ 'operations' | translate }}
+      </a>
+    </li>
+
+    <li class="nav-item">
+      <a class="nav-link" (click)="PepTablero()">
+        <i class="fas fa-building"></i> {{ 'PEP' | translate }}{{ ' ' }}{{ 'board' | translate }}
+      </a>
+    </li>
+
+    <li class="nav-item">
+      <a class="nav-link" (click)="warehouseproc()">
+        <i class="fas fa-warehouse"></i> {{ 'warehouses' | translate }}
+      </a>
+    </li>
+
+    <li class="nav-item">
+      <a class="nav-link" (click)="PepTablero()">
+        <i class="fas fa-warehouse"></i> {{ 'admins' | translate }}
+      </a>
+    </li>
+
+    <li class="nav-item">
+      <a class="nav-link" (click)="PepTablero()">
+        <i class="fas fa-warehouse"></i> Mantenimiento
+      </a>
+    </li>
+
+    <li class="nav-item">
+      <a class="nav-link" (click)="PepTablero()">
+        <i class="fas fa-tools"></i> {{ 'SETTINGS' | translate }}
+      </a>
+    </li>
+
+    <li class="nav-item">
+      <a class="nav-link" (click)="authService.logout()">
+        <i class="fas fa-sign-out-alt"></i> SALIR
+      </a>
+    </li>
+
+  </ul>
+</div>
