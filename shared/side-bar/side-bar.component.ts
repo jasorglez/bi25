@@ -78,12 +78,13 @@ export class SideBarComponent {
         getpermissionxBranchs() {
         //  alert('BRANCH: '+this.trackingService.getabranch()) ;
           if (this.trackingService.getabranch() ==='Si') {
-             // alert(localStorage.getItem('company'));
+              //alert(localStorage.getItem('company'));
+              //alert(localStorage.getItem('mail'));
               this.companysService.getpermissionsxBranch(localStorage.getItem('company')!, localStorage.getItem('mail')!).subscribe((databranch) => {
                 this.branchData = Object.values(databranch);
                 if (this.branchData.length > 0) {
 
-                   console.log("dataBranch", this.branchData) ;
+                  // console.log("dataBranch", this.branchData) ;
                   this.selectedBranchId = this.branchData[0].id_branchs ;
                   this.trackingService.setBranch(this.selectedBranchId) ;
                   this.getpermissionxProjects();
@@ -186,8 +187,19 @@ export class SideBarComponent {
             this.trackingService.setPlatform(this.selectedPlatformId) ;
         }
 
+          // Menus de las llamadas del HTML
+          dashboardproc()
+          {
+             this.trackingService.addLog(this.trackingService.getnameComp(), 'Eleccion del menu Dashboard', 'Menu Side Bar', '')
+             this.router.navigate(['/procesdas']);
+          }
 
-          // Menus de las llamadas del HTML   
+          Bpi()
+          {
+             this.trackingService.addLog(this.trackingService.getnameComp(), 'Eleccion del menu BPI', 'Menu Side Bar', '')
+             this.router.navigate(['/bpi']);
+          }
+
           PepOper()
           {
             this.trackingService.addLog(this.trackingService.getnameComp(), 'Eleccion del menu Pep Operaciones', 'Menu Side Bar', '')
@@ -206,11 +218,7 @@ export class SideBarComponent {
              this.router.navigate(['/proceswar']);
           }
 
-          dashboardproc()
-          {
-             this.trackingService.addLog(this.trackingService.getnameComp(), 'Eleccion del menu Dashboard', 'Menu Side Bar', '')
-             this.router.navigate(['/procesdas']);
-          }
+          
 
 
 

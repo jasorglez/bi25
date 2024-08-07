@@ -316,7 +316,7 @@ export class TrackingService {
       // Asignar el valor de "id" del último registro al nuevo registro
       data['idn'] = lastLog ? lastLog.idn + 1 : 1;
 
-      console.log(data) ;
+      //console.log(data) ;
 
       const postResponse = await this.http.post(`${environment.urlFirebase}tracking.json`, data).toPromise();
 

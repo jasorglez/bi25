@@ -117,6 +117,7 @@ export class WarehousesComponent {
       }
     }
   }
+  
   onGridReady(params: GridReadyEvent): void {
     this.gridApi = params.api;
     if (this.warehouses && this.warehouses.length > 0) {

@@ -1,0 +1,68 @@
+<div class="row full-height">
+  <div class="col-2 left-column">
+    <div class="card h-100">
+      <div class="card-body d-flex flex-column">
+        <ag-grid-angular
+          [domLayout]="'normal'"
+          [columnDefs]="colProject"
+          [rowSelection]="rowSelection"
+          [rowData]="project"
+          class="ag-theme-quartz flex-grow-1"
+          (selectionChanged)="onSelectionChanged($event)"
+          [rowGroupPanelShow]="rowGroupPanelShow"
+          [pivotPanelShow]="pivotPanelShow"
+          [pagination]="true"
+          (gridReady)="onGridReady($event)"
+          [paginationPageSize]="paginationPageSize"
+          [paginationPageSizeSelector]="paginationPageSizeSelector"
+          [groupDefaultExpanded]="groupDefaultExpanded"
+          [autoGroupColumnDef]="autoGroupColumnDef">
+        </ag-grid-angular>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-10 right-column d-flex flex-column">
+    <div class="card card-primary card-outline sticky-top">
+      <div class="card-body box-profile">
+        <div class="d-flex align-items-center">
+          <div class="logo-container mr-3">
+            <img [src]="'assets/img/template/pemex.png'" class="rounded-circle" width="100" alt="User profile picture">
+          </div>
+          <div class="flex-grow-1">
+            <div class="date-container">
+              <b>{{ 'date' | translate }}</b>
+              <div class="input-group mt-2">
+                <input type="date" class="form-control" [value]="selectedDate" (change)="onDateChange($event)">                 
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="card flex-grow-1 d-flex flex-column overflow-hidden">
+      <div class="card-body flex-grow-1 p-0">
+        <div class="grid-container">
+          <ag-grid-angular 
+            [domLayout]="'normal'"
+            [columnDefs]="colBook"
+            [rowSelection]="rowSelection"
+            [rowData]="lb"
+            class="ag-theme-quartz"
+            (selectionChanged)="onSelectionChanged2($event)"
+            [rowGroupPanelShow]="rowGroupPanelShow"
+            [pivotPanelShow]="pivotPanelShow"
+            [pagination]="true"
+            (gridReady)="onGridReady2($event)"
+            [paginationPageSize]="paginationPageSize"
+            [paginationPageSizeSelector]="paginationPageSizeSelector"
+            [groupDefaultExpanded]="groupDefaultExpanded"
+            [autoGroupColumnDef]="autoGroupColumnDef2">
+          </ag-grid-angular>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  </div>
